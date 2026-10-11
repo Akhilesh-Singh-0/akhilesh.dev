@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
+import { Instrument_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/layout/themeProvider";
 import "./globals.css";
+
+const instrument = Instrument_Sans({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Akhilesh Singh — Backend & Systems Engineer",
@@ -10,8 +18,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    // suppressHydrationWarning: next-themes sets data-theme before hydration.
-    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${instrument.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
