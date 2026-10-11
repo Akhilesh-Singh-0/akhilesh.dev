@@ -3,8 +3,29 @@ import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { TechTag } from "@/components/features/techTag";
+import { ProjectCard } from "@/components/features/projectCard";
+import type { Project } from "@/types/content";
 
 const tokens = ["bg", "surface", "ink", "rule", "ok", "fail"] as const;
+
+const samples: Project[] = [
+  {
+    slug: "sample-one",
+    name: "Sample project",
+    status: "live",
+    summary: "One sentence about what this project does and why it exists.",
+    stack: ["nodejs", "postgres", "redis", "bullmq"],
+    links: { live: "https://example.com", repo: "https://github.com" },
+  },
+  {
+    slug: "sample-two",
+    name: "Another sample",
+    status: "in-progress",
+    summary: "A shorter card with no links, to check that heights line up.",
+    stack: ["typescript", "nextjs"],
+    links: {},
+  },
+];
 
 export default function Page() {
   return (
@@ -86,6 +107,14 @@ export default function Page() {
           <TechTag name="bullmq" />
           <TechTag name="typescript" />
           <TechTag name="nextjs" />
+        </div>
+      </Section>
+
+      <Section id="projects" title="Projects">
+        <div className="grid gap-4 sm:grid-cols-2">
+          {samples.map((p) => (
+            <ProjectCard key={p.slug} project={p} />
+          ))}
         </div>
       </Section>
     </main>
