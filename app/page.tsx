@@ -1,10 +1,10 @@
 import { ThemeToggle } from "@/components/features/themeToggle";
 
-const tokens = ["bg", "surface", "ink", "muted", "rule", "ok", "fail"] as const;
+const tokens = ["bg", "surface", "ink", "rule", "ok", "fail"] as const;
 
 export default function Page() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-6 py-10">
+    <main className="px-6 py-10">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Akhilesh Singh</h1>
         <ThemeToggle />

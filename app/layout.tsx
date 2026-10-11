@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/layout/themeProvider";
+import { Shell } from "@/components/layout/shell";
 import "./globals.css";
 
 const instrument = Instrument_Sans({
@@ -24,7 +25,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <Shell>{children}</Shell>
+        </ThemeProvider>
       </body>
     </html>
   );
