@@ -1,5 +1,6 @@
 import { ThemeToggle } from "@/components/features/themeToggle";
 import { Section } from "@/components/layout/section";
+import { Button } from "@/components/ui/button";
 
 const tokens = ["bg", "surface", "ink", "rule", "ok", "fail"] as const;
 
@@ -35,6 +36,17 @@ export default function Page() {
             </li>
           ))}
         </ul>
+      </Section>
+
+      <Section id="buttons" title="Buttons">
+        <div className="flex flex-wrap items-center gap-3">
+          <Button>Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button size="sm">Small</Button>
+          <Button href="#about" variant="secondary">As a link</Button>
+          <Button disabled>Disabled</Button>
+        </div>
       </Section>
     </main>
   );
