@@ -2,6 +2,7 @@ import { ThemeToggle } from "@/components/features/themeToggle";
 import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { TechTag } from "@/components/features/techTag";
 
 const tokens = ["bg", "surface", "ink", "rule", "ok", "fail"] as const;
 
@@ -50,7 +51,7 @@ export default function Page() {
         </div>
       </Section>
 
-            <Section id="cards" title="Cards">
+      <Section id="cards" title="Cards">
         <div className="grid gap-4 sm:grid-cols-2">
           <Card
             title="Project name"
@@ -73,6 +74,18 @@ export default function Page() {
           <Card title="Another project" meta="In progress">
             <p>A shorter card with no footer, to check that heights line up.</p>
           </Card>
+        </div>
+      </Section>
+      
+      <Section id="tags" title="Tags">
+        <div className="flex flex-wrap gap-2">
+          <TechTag name="nodejs" />
+          <TechTag name="express" />
+          <TechTag name="postgres" />
+          <TechTag name="redis" />
+          <TechTag name="bullmq" />
+          <TechTag name="typescript" />
+          <TechTag name="nextjs" />
         </div>
       </Section>
     </main>
