@@ -68,3 +68,48 @@
     outline-offset: 3px;
   }
 }
+
+/* Marquee: an endlessly scrolling row. Used by components/ui/marquee.tsx. */
+.marquee {
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-seconds, 40s) linear infinite;
+}
+.marquee-track[data-reverse="true"] {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee-copy {
+  display: flex;
+  flex-shrink: 0;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* "Reduce motion": no scrolling, just a static wrapped list. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow: visible;
+  }
+  .marquee-track {
+    width: auto;
+    animation: none;
+  }
+  .marquee-copy {
+    flex-wrap: wrap;
+    flex-shrink: 1;
+    padding: 0 1.5rem;
+  }
+  .marquee-copy[aria-hidden="true"] {
+    display: none;
+  }
+}

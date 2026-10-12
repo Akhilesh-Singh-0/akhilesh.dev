@@ -21,6 +21,7 @@ export const site: Site = {
   avatar: "/avatar.png",
   nav: [
     { label: "About", href: "#about" },
+    { label: "Stack", href: "#stack" },
     { label: "Projects", href: "#projects" },
   ],
 };

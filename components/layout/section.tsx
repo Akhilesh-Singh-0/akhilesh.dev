@@ -1,10 +1,13 @@
+import { cn } from "@/lib/cn";
+
 type SectionProps = {
   id: string;
   title: string;
+  flush?: boolean;
   children: React.ReactNode;
 };
 
-export function Section({ id, title, children }: SectionProps) {
+export function Section({ id, title, flush, children }: SectionProps) {
   return (
     <section
       id={id}
@@ -17,7 +20,7 @@ export function Section({ id, title, children }: SectionProps) {
       >
         {title}
       </h2>
-      <div className="px-6 py-8">{children}</div>
+      <div className={cn(flush ? "py-8" : "px-6 py-8")}>{children}</div>
     </section>
   );
 }
