@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
-import { ThemeProvider } from "@/components/layout/themeProvider";
+import { ThemeToggle } from "@/components/features/themeToggle";
+import { Header } from "@/components/layout/header";
 import { Shell } from "@/components/layout/shell";
+import { ThemeProvider } from "@/components/layout/themeProvider";
+import { site } from "@/content/site";
 import "./globals.css";
 
 const instrument = Instrument_Sans({
@@ -12,7 +15,7 @@ const instrument = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Akhilesh Singh — Backend & Systems Engineer",
+  title: `${site.name} — ${site.role}`,
   description:
     "I build backend systems and think hard about how they break when real users show up.",
 };
@@ -26,7 +29,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
-          <Shell>{children}</Shell>
+          <Shell>
+            <Header nav={site.nav} actions={<ThemeToggle />} />
+            {children}
+          </Shell>
         </ThemeProvider>
       </body>
     </html>

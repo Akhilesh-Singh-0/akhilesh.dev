@@ -43,8 +43,14 @@
 }
 
 @layer base {
-  html {
+    html {
     background: var(--bg);
+    scroll-padding-top: 3.5rem;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
   body {
     background: var(--bg);
