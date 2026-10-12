@@ -1,31 +1,5 @@
 import { ThemeToggle } from "@/components/features/themeToggle";
-import { Section } from "@/components/layout/section";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { TechTag } from "@/components/features/techTag";
-import { ProjectCard } from "@/components/features/projectCard";
-import type { Project } from "@/types/content";
-
-const tokens = ["bg", "surface", "ink", "rule", "ok", "fail"] as const;
-
-const samples: Project[] = [
-  {
-    slug: "sample-one",
-    name: "Sample project",
-    status: "live",
-    summary: "One sentence about what this project does and why it exists.",
-    stack: ["nodejs", "postgres", "redis", "bullmq"],
-    links: { live: "https://example.com", repo: "https://github.com" },
-  },
-  {
-    slug: "sample-two",
-    name: "Another sample",
-    status: "in-progress",
-    summary: "A shorter card with no links, to check that heights line up.",
-    stack: ["typescript", "nextjs"],
-    links: {},
-  },
-];
+import { Projects } from "@/components/sections/projects";
 
 export default function Page() {
   return (
@@ -40,83 +14,7 @@ export default function Page() {
         <ThemeToggle />
       </div>
 
-      <Section id="about" title="About">
-        <p>
-          I build <strong>backend systems</strong> and <em>think hard</em> about
-          how they break when real users show up.
-        </p>
-      </Section>
-
-      <Section id="colors" title="Colors">
-        <ul className="grid grid-cols-2 gap-px border border-rule bg-rule sm:grid-cols-3">
-          {tokens.map((t) => (
-            <li key={t} className="bg-bg p-3">
-              <div
-                className="h-10 border border-rule"
-                style={{ background: `var(--${t})` }}
-              />
-              <p className="mt-2 text-xs">--{t}</p>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <Section id="buttons" title="Buttons">
-        <div className="flex flex-wrap items-center gap-3">
-          <Button>Primary</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button size="sm">Small</Button>
-          <Button href="#about" variant="secondary">As a link</Button>
-          <Button disabled>Disabled</Button>
-        </div>
-      </Section>
-
-      <Section id="cards" title="Cards">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Card
-            title="Project name"
-            meta={
-              <span className="inline-flex items-center gap-1.5 text-ok">
-                <span className="size-1.5 bg-ok" />
-                Live
-              </span>
-            }
-            footer={
-              <>
-                <Button size="sm" variant="secondary" href="#">Live</Button>
-                <Button size="sm" variant="ghost" href="#">Code</Button>
-              </>
-            }
-          >
-            <p>One sentence about what this project does and why it exists.</p>
-          </Card>
-
-          <Card title="Another project" meta="In progress">
-            <p>A shorter card with no footer, to check that heights line up.</p>
-          </Card>
-        </div>
-      </Section>
-      
-      <Section id="tags" title="Tags">
-        <div className="flex flex-wrap gap-2">
-          <TechTag name="nodejs" />
-          <TechTag name="express" />
-          <TechTag name="postgres" />
-          <TechTag name="redis" />
-          <TechTag name="bullmq" />
-          <TechTag name="typescript" />
-          <TechTag name="nextjs" />
-        </div>
-      </Section>
-
-      <Section id="projects" title="Projects">
-        <div className="grid gap-4 sm:grid-cols-2">
-          {samples.map((p) => (
-            <ProjectCard key={p.slug} project={p} />
-          ))}
-        </div>
-      </Section>
+      <Projects />
     </main>
   );
 }
