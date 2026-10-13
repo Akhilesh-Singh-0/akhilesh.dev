@@ -3,6 +3,7 @@ import { Connect } from "@/components/sections/connect";
 import { GitHubActivity } from "@/components/sections/githubActivity";
 import { Projects } from "@/components/sections/projects";
 import { Stack } from "@/components/sections/stack";
+import { Quote } from "@/components/sections/quote";
 
 export default function Page() {
   return (
@@ -12,6 +13,8 @@ export default function Page() {
       <Projects />
       <GitHubActivity />
       <Connect />
+      <Connect />
+      <Quote />
     </main>
   );
 }

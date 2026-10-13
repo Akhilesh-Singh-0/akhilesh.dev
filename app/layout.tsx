@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Sans } from "next/font/google";
+import { Caveat, Instrument_Sans } from "next/font/google";
 import { ThemeToggle } from "@/components/features/themeToggle";
 import { Header } from "@/components/layout/header";
 import { Shell } from "@/components/layout/shell";
@@ -14,6 +14,12 @@ const instrument = Instrument_Sans({
   display: "swap",
 });
 
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-caveat",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: `${site.name} — ${site.role}`,
   description:
@@ -24,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${instrument.variable} h-full antialiased`}
+      className={`${instrument.variable} ${caveat.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">

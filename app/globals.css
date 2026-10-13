@@ -32,6 +32,7 @@
   --color-fail: var(--fail);
 
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-hand: var(--font-caveat), cursive;
   --font-mono: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: 0;
@@ -69,7 +70,6 @@
   }
 }
 
-/* Marquee: an endlessly scrolling row. Used by components/ui/marquee.tsx. */
 .marquee {
   overflow: hidden;
 }
@@ -95,7 +95,6 @@
   }
 }
 
-/* "Reduce motion": no scrolling, just a static wrapped list. */
 @media (prefers-reduced-motion: reduce) {
   .marquee {
     overflow: visible;
@@ -112,4 +111,12 @@
   .marquee-copy[aria-hidden="true"] {
     display: none;
   }
+}
+
+.hatch {
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 5px,
+    var(--rule) 5px 6px
+  );
 }
