@@ -4,10 +4,11 @@ type SectionProps = {
   id: string;
   title: string;
   flush?: boolean;
+  bare?: boolean;
   children: React.ReactNode;
 };
 
-export function Section({ id, title, flush, children }: SectionProps) {
+export function Section({ id, title, flush, bare, children }: SectionProps) {
   return (
     <section
       id={id}
@@ -20,7 +21,9 @@ export function Section({ id, title, flush, children }: SectionProps) {
       >
         {title}
       </h2>
-      <div className={cn(flush ? "py-8" : "px-6 py-8")}>{children}</div>
+      <div className={cn(bare ? "" : flush ? "py-8" : "px-6 py-8")}>
+        {children}
+      </div>
     </section>
   );
 }
