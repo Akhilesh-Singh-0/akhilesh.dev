@@ -8,6 +8,7 @@ type Site = {
   location: string;
   timeZone: string;
   avatar?: string; // path under /public
+  github: string; // GitHub username
   nav: NavItem[];
 };
 
@@ -19,9 +20,11 @@ export const site: Site = {
   location: "India",
   timeZone: "Asia/Kolkata",
   avatar: "/avatar.png",
+  github: "Akhilesh-Singh-0",
   nav: [
     { label: "About", href: "#about" },
     { label: "Stack", href: "#stack" },
     { label: "Projects", href: "#projects" },
+    { label: "GitHub", href: "#github" },
   ],
 };
