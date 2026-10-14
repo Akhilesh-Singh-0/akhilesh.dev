@@ -1,3 +1,5 @@
+import { Band } from "@/components/layout/band";
+import { Divider } from "@/components/layout/divider";
 import { cn } from "@/lib/cn";
 
 type SectionProps = {
@@ -10,20 +12,21 @@ type SectionProps = {
 
 export function Section({ id, title, flush, bare, children }: SectionProps) {
   return (
-    <section
-      id={id}
-      aria-labelledby={`${id}-title`}
-      className="border-b border-rule"
-    >
-      <h2
-        id={`${id}-title`}
-        className="border-b border-rule px-6 py-4 text-2xl font-medium tracking-tight"
-      >
-        {title}
-      </h2>
-      <div className={cn(bare ? "" : flush ? "py-8" : "px-6 py-8")}>
-        {children}
-      </div>
+    <section id={id} aria-labelledby={`${id}-title`}>
+      <Divider />
+      <Band>
+        <h2
+          id={`${id}-title`}
+          className="px-6 py-4 text-2xl font-medium tracking-tight"
+        >
+          {title}
+        </h2>
+      </Band>
+      <Band>
+        <div className={cn(bare ? "" : flush ? "py-8" : "px-6 py-8")}>
+          {children}
+        </div>
+      </Band>
     </section>
   );
 }

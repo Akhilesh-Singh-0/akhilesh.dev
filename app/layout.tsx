@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/header";
 import { Shell } from "@/components/layout/shell";
 import { ThemeProvider } from "@/components/layout/themeProvider";
 import { CommandMenu } from "@/components/sections/commandMenu";
+import { Footer } from "@/components/layout/footer";
 import { Tooltip } from "@/components/ui/tooltip";
 import { site } from "@/content/site";
 import "./globals.css";
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               }
             />
             {children}
+            <Footer name={site.name} />
           </Shell>
         </ThemeProvider>
       </body>
