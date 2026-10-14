@@ -120,3 +120,7 @@
     var(--rule) 5px 6px
   );
 }
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}

@@ -4,6 +4,8 @@ import { ThemeToggle } from "@/components/features/themeToggle";
 import { Header } from "@/components/layout/header";
 import { Shell } from "@/components/layout/shell";
 import { ThemeProvider } from "@/components/layout/themeProvider";
+import { CommandMenu } from "@/components/sections/commandMenu";
+import { Tooltip } from "@/components/ui/tooltip";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -36,7 +38,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <Shell>
-            <Header nav={site.nav} actions={<ThemeToggle />} />
+            <Header
+              nav={site.nav}
+              actions={
+                <div className="flex items-center gap-2">
+                  <CommandMenu />
+                  <Tooltip label="Toggle theme" align="end">
+                    <ThemeToggle />
+                  </Tooltip>
+                </div>
+              }
+            />
             {children}
           </Shell>
         </ThemeProvider>
