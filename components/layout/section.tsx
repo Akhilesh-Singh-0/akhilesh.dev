@@ -7,10 +7,11 @@ type SectionProps = {
   title: string;
   flush?: boolean;
   bare?: boolean;
+  raw?: boolean;
   children: React.ReactNode;
 };
 
-export function Section({ id, title, flush, bare, children }: SectionProps) {
+export function Section({ id, title, flush, bare, raw, children }: SectionProps) {
   return (
     <section id={id} aria-labelledby={`${id}-title`}>
       <Divider />
@@ -22,11 +23,15 @@ export function Section({ id, title, flush, bare, children }: SectionProps) {
           {title}
         </h2>
       </Band>
-      <Band>
-        <div className={cn(bare ? "" : flush ? "py-8" : "px-6 py-8")}>
-          {children}
-        </div>
-      </Band>
+      {raw ? (
+        children
+      ) : (
+        <Band>
+          <div className={cn(bare ? "" : flush ? "py-8" : "px-6 py-8")}>
+            {children}
+          </div>
+        </Band>
+      )}
     </section>
   );
 }

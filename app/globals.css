@@ -44,10 +44,15 @@
 }
 
 @layer base {
-    html {
+  html {
     background: var(--bg);
     scroll-padding-top: 3.5rem;
   }
+
+  h2 {
+    font-style: italic;
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     html {
       scroll-behavior: smooth;

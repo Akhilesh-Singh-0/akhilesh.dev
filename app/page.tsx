@@ -13,7 +13,6 @@ export default function Page() {
       <Projects />
       <GitHubActivity />
       <Connect />
-      <Connect />
       <Quote />
     </main>
   );

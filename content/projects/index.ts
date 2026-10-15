@@ -7,10 +7,10 @@ import { nexus } from "./nexus";
 import { quizmon } from "./quizmon";
 
 export const projects: Project[] = [
-  guardrail,
   beacon,
+  guardrail,
   flowspace,
+  quizmon,
   nexus,
   luminary,
-  quizmon,
 ];
