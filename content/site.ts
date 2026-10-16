@@ -14,6 +14,7 @@ type Site = {
   github: string; // GitHub username
   email: string;
   resume?: string; // path under /public; the button is hidden when unset
+  banner?: { dark: string; light: string }; // wide image under the nav
   social: Social[];
   nav: NavItem[];
 };
@@ -31,6 +32,9 @@ export const site: Site = {
   github,
   email: "singhakhilesh19468@gmail.com",
   resume: "/resume.pdf",
+  banner: { 
+    dark: "/banner-dark.mp4", light: "/banner-light.mp4" 
+  },
   social: [
     { key: "github", label: "GitHub", href: `https://github.com/${github}` },
     {

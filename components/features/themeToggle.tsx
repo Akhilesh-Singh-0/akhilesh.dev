@@ -1,12 +1,34 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { flushSync } from "react-dom";
 import { useTheme } from "next-themes";
 import { playClick } from "@/lib/sound";
 
+// false on the server and during hydration, true afterwards. This avoids a
+// mismatch, because the server can't know which theme the visitor uses.
 const subscribe = () => () => {};
 const useMounted = () =>
   useSyncExternalStore(subscribe, () => true, () => false);
+
+// Switches the theme with a wipe, using the browser's View Transitions API.
+// Browsers without it, and visitors who prefer less motion, get an instant switch.
+function applyTheme(next: "light" | "dark", setTheme: (theme: string) => void) {
+  const update = () => {
+    const root = document.documentElement;
+    root.setAttribute("data-theme", next);
+    root.style.colorScheme = next;
+    flushSync(() => setTheme(next));
+  };
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  if (reduceMotion || !document.startViewTransition) {
+    update();
+    return;
+  }
+  document.startViewTransition(update);
+}
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -21,9 +43,9 @@ export function ThemeToggle() {
       }
       onClick={() => {
         playClick();
-        setTheme(isDark ? "light" : "dark");
+        applyTheme(isDark ? "light" : "dark", setTheme);
       }}
-      className="inline-flex size-9 items-center justify-center border border-rule text-muted transition-colors hover:border-ink hover:text-ink"
+      className="inline-flex size-9 items-center justify-center border border-rule text-ink transition-colors hover:border-ink"
     >
       {mounted ? isDark ? <SunIcon /> : <MoonIcon /> : null}
     </button>

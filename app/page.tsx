@@ -1,3 +1,4 @@
+import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Connect } from "@/components/sections/connect";
 import { GitHubActivity } from "@/components/sections/githubActivity";
@@ -8,6 +9,7 @@ import { Quote } from "@/components/sections/quote";
 export default function Page() {
   return (
     <main>
+      <Hero />
       <About />
       <Stack />
       <Projects />

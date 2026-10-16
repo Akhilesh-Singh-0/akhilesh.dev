@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* `dark:` utilities follow the data-theme attribute (set by next-themes). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
   color-scheme: light;
   --bg: #ffffff;
@@ -128,4 +131,28 @@
 
 body:has(dialog[open]) {
   overflow: hidden;
+}
+
+/* A field of small dots, used as the hero placeholder until a banner is set. */
+.dots {
+  background-image: radial-gradient(var(--rule) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+/* Theme switch: the new theme wipes in from the bottom of the screen. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  animation: theme-wipe 0.7s ease-in-out;
+}
+@keyframes theme-wipe {
+  from {
+    clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%);
+  }
+  to {
+    clip-path: polygon(-50% 100%, 150% 100%, 100% 0%, 0% 0%);
+  }
 }
