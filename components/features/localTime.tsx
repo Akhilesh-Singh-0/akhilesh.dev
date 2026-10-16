@@ -1,18 +1,25 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
-
-function subscribe(onChange: () => void) {
-  const id = setInterval(onChange, 1000);
-  return () => clearInterval(id);
-}
+import { useEffect, useState } from "react";
 
 export function LocalTime({ timeZone }: { timeZone: string }) {
-  const time = useSyncExternalStore(
-    subscribe,
-    () => new Date().toLocaleTimeString("en-US", { timeZone }),
-    () => "",
-  );
+  const [time, setTime] = useState("");
 
-  return <span className="inline-block min-w-[10ch] tabular-nums">{time}</span>;
+  useEffect(() => {
+    const updateTime = () => {
+      setTime(
+        new Date().toLocaleTimeString("en-US", {
+          timeZone,
+        })
+      );
+    };
+
+    updateTime();
+
+    const intervalId = setInterval(updateTime, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [timeZone]);
+
+  return <>{time}</>;
 }

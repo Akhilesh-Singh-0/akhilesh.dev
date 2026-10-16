@@ -1,8 +1,8 @@
 export const about: { bullets: string[] } = {
   bullets: [
-    "I'm a **Backend & Systems Engineer**. I build *infrastructure and tooling*: cost enforcement, observability, real-time messaging.",
-    "I start with the part most likely to break: **atomic** cost checks in Guardrail, a **queue** between telemetry and the database in Beacon, **persist before broadcast** in Nexus.",
-    "I learn by building the thing and writing down what went wrong. Beacon alone meant spans arriving *out of order*, an OTLP decoder, and a route that choked on protobuf.",
-    "I work in **TypeScript, Node.js, PostgreSQL, Redis and BullMQ**, and I'm going deeper into **system design** and applied AI.",
+    "I'm a **Software Engineer** who enjoys building products and figuring out how the systems behind them work.",
+    "My projects range from real-time applications to backend tools for AI systems. **Guardrail** explores API cost controls, **Beacon** tracks AI agent execution and **FlowSpace** is a real-time project management platform.",
+    "Building these projects has meant dealing with things like *out-of-order events*, background jobs, database writes, and message delivery. Working through these problems has helped me understand backend systems beyond just writing API endpoints.",
+    "I work mainly with **TypeScript, Node.js, PostgreSQL, and Redis**, and I'm currently learning more about **system design** and **Applied AI**.",
   ],
 };
