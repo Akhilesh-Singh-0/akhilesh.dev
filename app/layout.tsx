@@ -24,7 +24,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: `${site.name} — ${site.role}`,
+  title: "Akhilesh Singh",
   description:
     "I build backend systems and think hard about how they break when real users show up.",
 };
