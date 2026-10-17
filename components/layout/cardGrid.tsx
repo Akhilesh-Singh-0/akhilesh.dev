@@ -52,7 +52,7 @@ export function CardGrid({
 
       {items.length > initial ? (
         <Band innerClassName="flex justify-center px-6 py-5">
-          <Button variant="secondary" onClick={() => setExpanded((e) => !e)}>
+          <Button variant="primary" onClick={() => setExpanded((e) => !e)}>
             {expanded ? lessLabel : moreLabel}
             {expanded ? (
               <LuArrowUp className="size-4" aria-hidden />
