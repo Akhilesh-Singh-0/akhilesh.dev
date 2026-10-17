@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   title: "Akhilesh Singh",
   description:
     "I build backend systems and think hard about how they break when real users show up.",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
