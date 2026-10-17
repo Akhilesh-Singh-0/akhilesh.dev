@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   description:
     "I build backend systems and think hard about how they break when real users show up.",
   icons: {
-    icon: "/icon.png",
+    icon: "/favicon.png",
   },
 };
 
