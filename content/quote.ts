@@ -1,4 +1,3 @@
-// The closing quote. Use typographic apostrophes (’) in the text.
 export const quote = {
   text: "Your time is limited, so don’t waste it living someone else’s life.",
   author: "Steve Jobs",

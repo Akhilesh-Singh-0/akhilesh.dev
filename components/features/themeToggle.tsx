@@ -5,14 +5,10 @@ import { flushSync } from "react-dom";
 import { useTheme } from "next-themes";
 import { playClick } from "@/lib/sound";
 
-// false on the server and during hydration, true afterwards. This avoids a
-// mismatch, because the server can't know which theme the visitor uses.
 const subscribe = () => () => {};
 const useMounted = () =>
   useSyncExternalStore(subscribe, () => true, () => false);
 
-// Switches the theme with a wipe, using the browser's View Transitions API.
-// Browsers without it, and visitors who prefer less motion, get an instant switch.
 function applyTheme(next: "light" | "dark", setTheme: (theme: string) => void) {
   const update = () => {
     const root = document.documentElement;
