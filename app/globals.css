@@ -1,3 +1,4 @@
+
 @import "tailwindcss";
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
@@ -18,6 +19,13 @@
   --project-diagram-text: #171717;
   --project-diagram-secondary: #404040;
   --project-diagram-arrow: #525252;
+
+  --text-small: 0.875rem;
+  --text-medium: 1rem;
+  --text-large: 1.25rem;
+
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
 }
 
 [data-theme="dark"] {
@@ -51,6 +59,14 @@
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
   --font-hand: var(--font-caveat), cursive;
   --font-mono: var(--font-instrument), ui-monospace, monospace;
+
+  /* Typography tokens for Tailwind */
+  --text-type-small: var(--text-small);
+  --text-type-medium: var(--text-medium);
+  --text-type-large: var(--text-large);
+
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
 
   --radius-sm: 0;
   --radius-md: 0;

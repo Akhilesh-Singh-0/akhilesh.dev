@@ -1,20 +1,32 @@
-type NavItem = { label: string; href: string };
+type NavItem = {
+  label: string;
+  href: string;
+};
 
 export type SocialKey = "github" | "linkedin" | "x";
-type Social = { key: SocialKey; label: string; href: string };
+
+type Social = {
+  key: SocialKey;
+  label: string;
+  href: string;
+};
 
 type Site = {
   name: string;
   role: string;
   headline: string;
+  beaconUrl?: string;
   availability?: string;
   location: string;
   timeZone: string;
-  avatar?: string; // path under /public
-  github: string; // GitHub username
+  avatar?: string;
+  github: string;
   email: string;
-  resume?: string; // path under /public; the button is hidden when unset
-  banner?: { dark: string; light: string }; // wide image under the nav
+  resume?: string;
+  banner?: {
+    dark: string;
+    light: string;
+  };
   social: Social[];
   nav: NavItem[];
 };
@@ -23,8 +35,9 @@ const github = "Akhilesh-Singh-0";
 
 export const site: Site = {
   name: "Akhilesh Singh",
-  role: "Backend & Systems Engineer",
-  headline: "Building Beacon, open-source observability for AI agents.",
+  role: "Full Stack Developer",
+  headline: "Building Beacon",
+  beaconUrl: "https://beacon-web-mu.vercel.app",
   availability: "Open to work",
   location: "India",
   timeZone: "Asia/Kolkata",
@@ -32,11 +45,16 @@ export const site: Site = {
   github,
   email: "singhakhilesh19468@gmail.com",
   resume: "/resume.pdf",
-  banner: { 
-    dark: "/banner-dark.mp4", light: "/banner-light.mp4" 
+  banner: {
+    dark: "/banner-dark.mp4",
+    light: "/banner-light.mp4",
   },
   social: [
-    { key: "github", label: "GitHub", href: `https://github.com/${github}` },
+    {
+      key: "github",
+      label: "GitHub",
+      href: `https://github.com/${github}`,
+    },
     {
       key: "x",
       label: "X (Twitter)",
