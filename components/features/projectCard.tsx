@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LuArrowUpRight } from "react-icons/lu";
 import { SiGithub } from "react-icons/si";
 import { ProjectImage } from "@/components/features/projectImage";
@@ -15,11 +16,16 @@ const statuses: Record<
   { label: string; text: string; dot: string }
 > = {
   live: { label: "Live", text: "text-ok", dot: "bg-ok" },
-  "in-progress": { label: "In progress", text: "text-wip", dot: "bg-wip" },
+  "in-progress": {
+    label: "In progress",
+    text: "text-wip",
+    dot: "bg-wip",
+  },
 };
 
 function Status({ status }: { status: ProjectStatus }) {
   const { label, text, dot } = statuses[status];
+
   return (
     <span className={cn("inline-flex items-center gap-1.5 font-medium", text)}>
       <span className={cn("size-1.5", dot)} />
@@ -29,18 +35,51 @@ function Status({ status }: { status: ProjectStatus }) {
 }
 
 export function ProjectCard({ project }: { project: Project }) {
-  const { name, tagline, status, summary, stack, links, image } = project;
+  const { slug, name, tagline, status, summary, stack, links, image } = project;
+
   const shown = stack.slice(0, MAX_TAGS);
   const extra = stack.length - shown.length;
 
   return (
-    <Card
-      title={name}
-      subtitle={tagline}
-      meta={<Status status={status} />}
-      media={<ProjectImage src={image} alt={`${name} screenshot`} />}
-      footer={
-        <div className="grid grid-cols-2 gap-2">
+    <div className="group relative min-w-0">
+      <Link
+        href={`/projects/${slug}`}
+        aria-label={`View ${name} case study`}
+        className="absolute inset-0 z-0"
+      >
+        <span className="sr-only">View {name} case study</span>
+      </Link>
+
+      <Card
+        title={name}
+        subtitle={tagline}
+        meta={<Status status={status} />}
+        media={
+          image ? (
+            <ProjectImage src={image} alt={`${name} preview`} />
+          ) : null
+        }
+        className="h-full min-w-0 transition-colors group-hover:border-neutral-500 group-focus-within:border-neutral-500"
+      >
+        <p className="line-clamp-3 text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+          {summary}
+        </p>
+
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {shown.map((key) => (
+            <li key={key}>
+              <TechTag name={key} />
+            </li>
+          ))}
+
+          {extra > 0 && (
+            <li>
+              <Tag>+{extra}</Tag>
+            </li>
+          )}
+        </ul>
+
+        <div className="relative z-10 mt-5 grid grid-cols-2 gap-2">
           <Button
             href={links.live}
             external
@@ -50,6 +89,7 @@ export function ProjectCard({ project }: { project: Project }) {
             Visit
             <LuArrowUpRight className="size-4" aria-hidden />
           </Button>
+
           <Button
             variant="secondary"
             href={links.repo}
@@ -61,21 +101,7 @@ export function ProjectCard({ project }: { project: Project }) {
             GitHub
           </Button>
         </div>
-      }
-    >
-      <p className="line-clamp-3">{summary}</p>
-      <ul className="mt-4 flex flex-wrap gap-2">
-        {shown.map((key) => (
-          <li key={key}>
-            <TechTag name={key} />
-          </li>
-        ))}
-        {extra > 0 ? (
-          <li>
-            <Tag>+{extra}</Tag>
-          </li>
-        ) : null}
-      </ul>
-    </Card>
+      </Card>
+    </div>
   );
 }
