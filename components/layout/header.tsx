@@ -7,7 +7,7 @@ type HeaderProps = {
 
 export function Header({ nav, actions }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-10 border-b border-rule bg-bg">
+    <header className="sticky top-0 z-50 border-b border-rule bg-bg">
       <div className="mx-auto flex h-14 w-full max-w-2xl items-center justify-between gap-4 px-6 sm:border-x sm:border-rule">
         <nav
           aria-label="Main"
